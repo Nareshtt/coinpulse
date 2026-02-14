@@ -41,10 +41,10 @@ export default function Header() {
 
   return (
     <>
-      <header>
+      <header className="bg-gray-50">
         <div className="main-container inner">
           <Link href="/">
-            <Image src="/logo.svg" alt="CoinPulse logo" width={132} height={40} />
+            <Image src="/logo.svg" alt="CoinPulse logo" width={140} height={40} />
           </Link>
 
           <nav>
@@ -68,7 +68,7 @@ export default function Header() {
               </svg>
               Search
               <span className="kbd ml-2">
-                <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 bg-gray-50 px-1.5 font-mono text-[10px] font-medium text-slate-500">
+                <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 bg-gray-100 px-1.5 font-mono text-[10px] font-medium text-slate-500">
                   <span className="text-xs">⌘</span>K
                 </kbd>
               </span>

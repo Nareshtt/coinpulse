@@ -206,7 +206,7 @@
   }
 
   header {
-    @apply border-b border-gray-200 h-20 bg-white;
+    @apply border-b border-gray-200 h-20 bg-gray-50;
 
     .inner {
       @apply flex justify-between items-center h-full;
