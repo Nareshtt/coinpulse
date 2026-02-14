@@ -58,17 +58,21 @@ export default function Header() {
               Home
             </Link>
 
-            <p 
-              className="nav-link cursor-pointer" 
+            <div 
+              className="nav-link cursor-pointer flex items-center gap-2" 
               onClick={() => setIsSearchOpen(true)}
             >
-              Search Modal
-              <span className="kbd">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-search">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+              </svg>
+              Search
+              <span className="kbd ml-2">
                 <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium">
                   <span className="text-xs">⌘</span>K
                 </kbd>
               </span>
-            </p>
+            </div>
 
             <Link
               href="/coins"
@@ -83,13 +87,13 @@ export default function Header() {
       </header>
 
       {isSearchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/50" onClick={() => setIsSearchOpen(false)}>
-          <div className="dialog w-full max-w-2xl mx-4 bg-dark-400 rounded-xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/60" onClick={() => setIsSearchOpen(false)}>
+          <div className="dialog w-full max-w-2xl mx-4 bg-dark-400 rounded-xl overflow-hidden border border-dark-500" onClick={(e) => e.stopPropagation()}>
             <div className="cmd-input p-4 border-b border-dark-500">
               <input
                 type="text"
                 placeholder="Search coins..."
-                className="w-full bg-transparent text-white placeholder:text-cyan-100 outline-none text-lg"
+                className="w-full bg-transparent text-white placeholder:text-gray-500 outline-none text-lg"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus
@@ -97,7 +101,7 @@ export default function Header() {
             </div>
             <div className="list max-h-96 overflow-y-auto">
               {filteredCoins.length === 0 ? (
-                <div className="empty py-6 text-center text-sm text-gray-400">
+                <div className="empty py-6 text-center text-sm text-gray-500">
                   No results found
                 </div>
               ) : (
@@ -112,13 +116,13 @@ export default function Header() {
                       <img src={coin.image} alt={coin.name} className="size-9 rounded-full" />
                       <div>
                         <p className="font-semibold text-white">{coin.name}</p>
-                        <p className="coin-symbol text-sm text-cyan-100 uppercase">{coin.symbol}</p>
+                        <p className="coin-symbol text-sm text-gray-400 uppercase">{coin.symbol}</p>
                       </div>
                     </div>
-                    <div className="coin-price text-right font-semibold">
+                    <div className="coin-price text-right font-semibold text-gray-300">
                       ${coin.price.toLocaleString()}
                     </div>
-                    <div className={`coin-change text-right font-medium ${coin.change >= 0 ? "text-green-400" : "text-red-400"}`}>
+                    <div className={`coin-change text-right font-medium ${coin.change >= 0 ? "text-green-500" : "text-red-500"}`}>
                       {coin.change >= 0 ? "+" : ""}{coin.change}%
                     </div>
                   </Link>

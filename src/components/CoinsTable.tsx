@@ -21,10 +21,10 @@ interface CoinsTableProps {
 
 export default function CoinsTable({ coins }: CoinsTableProps) {
   return (
-    <div className="coins-table bg-dark-500 rounded-xl max-h-fit overflow-hidden">
+    <div className="coins-table bg-dark-600 rounded-xl max-h-fit overflow-hidden">
       <table className="custom-scrollbar w-full">
         <thead>
-          <tr className="bg-dark-400 text-cyan-400">
+          <tr className="bg-dark-500 text-gray-400">
             <th className="text-left py-4 pl-5 font-medium max-w-20">#</th>
             <th className="text-left py-4 font-medium">Name</th>
             <th className="text-right py-4 font-medium">Price</th>
@@ -34,8 +34,8 @@ export default function CoinsTable({ coins }: CoinsTableProps) {
         </thead>
         <tbody>
           {coins.map((coin, index) => (
-            <tr key={coin.id} className="border-b border-dark-400 hover:bg-dark-400/30">
-              <td className="py-5 pl-5 font-medium text-cyan-100">{index + 1}</td>
+            <tr key={coin.id} className="border-b border-dark-500 hover:bg-dark-500/50">
+              <td className="py-5 pl-5 font-medium text-gray-400">{index + 1}</td>
               <td className="py-3 font-semibold">
                 <a href={`/coins/${coin.id}`} className="flex items-center gap-3">
                   <Image
@@ -45,15 +45,15 @@ export default function CoinsTable({ coins }: CoinsTableProps) {
                     height={24}
                     className="rounded-full"
                   />
-                  <span>{coin.name}</span>
-                  <span className="text-gray-400 text-sm uppercase">{coin.symbol}</span>
+                  <span className="text-white">{coin.name}</span>
+                  <span className="text-gray-500 text-sm uppercase">{coin.symbol}</span>
                 </a>
               </td>
-              <td className="py-4 text-right font-medium">{formatCurrency(coin.current_price)}</td>
-              <td className={`py-4 text-right font-medium ${coin.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+              <td className="py-4 text-right font-medium text-gray-300">{formatCurrency(coin.current_price)}</td>
+              <td className={`py-4 text-right font-medium ${coin.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                 {formatPercentage(coin.price_change_percentage_24h)}
               </td>
-              <td className="py-4 pr-5 text-right font-medium">{formatCurrency(coin.market_cap)}</td>
+              <td className="py-4 pr-5 text-right font-medium text-gray-400">{formatCurrency(coin.market_cap)}</td>
             </tr>
           ))}
         </tbody>

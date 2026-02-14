@@ -8,7 +8,7 @@ interface PriceChartProps {
   height?: number;
 }
 
-export default function PriceChart({ data, color = '#00cc6a', height = 300 }: PriceChartProps) {
+export default function PriceChart({ data, color = '#22c55e', height = 300 }: PriceChartProps) {
   const formattedData = data.map((d) => ({
     ...d,
     time: d.time.slice(5),
@@ -34,8 +34,8 @@ export default function PriceChart({ data, color = '#00cc6a', height = 300 }: Pr
           />
           <Tooltip
             contentStyle={{ 
-              backgroundColor: '#1e1e2a', 
-              border: '1px solid rgba(255,255,255,0.1)',
+              backgroundColor: '#18181f', 
+              border: '1px solid rgba(255,255,255,0.15)',
               borderRadius: '8px',
               color: '#fff'
             }}
