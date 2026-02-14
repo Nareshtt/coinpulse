@@ -1,65 +1,102 @@
+"use client";
+
 import Image from "next/image";
+import DataTable from "@/components/DataTable";
+import { TrendingCoin } from "@/types";
+
+const dummyTrendingCoins: TrendingCoin[] = [
+  {
+    item: {
+      id: "bitcoin",
+      name: "Bitcoin",
+      symbol: "BTC",
+      market_cap_rank: 1,
+      thumb: "https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png",
+      large: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+      slug: "bitcoin",
+      price_btc: 1,
+      score: 0,
+    },
+  },
+  {
+    item: {
+      id: "ethereum",
+      name: "Ethereum",
+      symbol: "ETH",
+      market_cap_rank: 2,
+      thumb: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
+      large: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+      slug: "ethereum",
+      price_btc: 0.05,
+      score: 1,
+    },
+  },
+];
+
+const columns = [
+  {
+    header: "Name",
+    cell: (row: TrendingCoin) => (
+      <div className="flex items-center gap-2">
+        <Image
+          src={row.item.large}
+          alt={row.item.name}
+          width={36}
+          height={36}
+        />
+        <span>{row.item.name}</span>
+      </div>
+    ),
+  },
+  {
+    header: "24h Change",
+    cell: (row: TrendingCoin) => (
+      <span className="text-[#00ff88]">+2.5%</span>
+    ),
+  },
+  {
+    header: "Price",
+    cell: () => <span>$89,000</span>,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className="main-container">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-7">
+        <div id="coin-overview" className="card-gaming p-6">
+          <div className="flex items-center gap-4">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png"
+              alt="Bitcoin"
+              width={56}
+              height={56}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="header pt-2">
+              <p className="text-lg font-semibold">Bitcoin BTC</p>
+              <h1 className="text-2xl font-bold">$89,234</h1>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+
+        <div id="trending-coins" className="card-gaming p-6">
+          <h2 className="text-xl font-semibold mb-4">Trending Coins</h2>
+          <DataTable
+            columns={columns}
+            data={dummyTrendingCoins}
+            rowKey={(row) => row.item.id}
+          />
+        </div>
+      </section>
+
+      <section className="w-full mt-7 space-y-4">
+        <h2 className="text-xl font-semibold">Categories</h2>
+        <div className="flex flex-wrap gap-3">
+          <span className="px-4 py-2 bg-[#16161f] border border-[#2a2a3a] rounded-full">DeFi</span>
+          <span className="px-4 py-2 bg-[#16161f] border border-[#2a2a3a] rounded-full">Metaverse</span>
+          <span className="px-4 py-2 bg-[#16161f] border border-[#2a2a3a] rounded-full">Gaming</span>
+        </div>
+      </section>
+    </main>
   );
 }
