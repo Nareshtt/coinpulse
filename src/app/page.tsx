@@ -1,6 +1,7 @@
 import Image from "next/image";
 import DataTable from "@/components/DataTable";
 import { getCoinDetails, getTrendingCoins, getCoinCategories } from "@/lib/coingecko";
+import { formatCurrency, formatPercentage } from "@/lib/utils";
 
 interface CoinData {
   id: string;
@@ -91,9 +92,9 @@ export default async function Home() {
             )}
             <div className="header pt-2">
               <p className="text-lg font-semibold">{coin?.name || "Bitcoin"} {coin?.symbol?.toUpperCase() || "BTC"}</p>
-              <h1 className="text-2xl font-bold">${price.toLocaleString()}</h1>
+              <h1 className="text-2xl font-bold">{formatCurrency(price)}</h1>
               <span className={change >= 0 ? "text-[#00ff88]" : "text-[#ff3366]"}>
-                {change >= 0 ? "+" : ""}{change.toFixed(2)}%
+                {formatPercentage(change)}
               </span>
             </div>
           </div>
