@@ -36,8 +36,8 @@ export default function Categories({ categories }: CategoriesProps) {
           {displayCategories.slice(0, 8).map((category) => (
             <tr key={category.id} className="border-t border-gray-100 hover:bg-gray-50 cursor-pointer">
               <td className="py-4 pl-5 font-bold text-gray-700">{category.name}</td>
-              <td className="py-4 text-right font-medium text-gray-500">{category.coin_count}</td>
-              <td className="py-4 pr-5 text-right font-medium text-green-500">+2.5%</td>
+              <td className="py-4 text-right font-medium text-slate-500">{category.coin_count}</td>
+              <td className="py-4 pr-5 text-right font-medium text-green-600">+2.5%</td>
             </tr>
           ))}
         </tbody>

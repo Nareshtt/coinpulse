@@ -28,7 +28,7 @@ export default function TrendingCoins({ data }: TrendingCoinsProps) {
                   <span className="text-sm md:text-base text-gray-900">{coin.item.name}</span>
                 </a>
               </td>
-              <td className="py-4 pr-5 font-medium text-right text-green-500">+2.5%</td>
+              <td className="py-4 pr-5 font-medium text-right text-green-600">+2.5%</td>
               <td className="py-4 pr-5 font-bold text-right text-sm max-w-full truncate text-gray-700">$0.00</td>
             </tr>
           ))}

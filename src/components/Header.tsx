@@ -68,7 +68,7 @@ export default function Header() {
               </svg>
               Search
               <span className="kbd ml-2">
-                <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-gray-100 px-1.5 font-mono text-[10px] font-medium text-gray-500">
+                <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 bg-gray-50 px-1.5 font-mono text-[10px] font-medium text-slate-500">
                   <span className="text-xs">⌘</span>K
                 </kbd>
               </span>
@@ -87,13 +87,13 @@ export default function Header() {
       </header>
 
       {isSearchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/40" onClick={() => setIsSearchOpen(false)}>
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/30" onClick={() => setIsSearchOpen(false)}>
           <div className="dialog w-full max-w-2xl mx-4 bg-white rounded-xl overflow-hidden border border-gray-200 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="cmd-input p-4 border-b border-gray-100">
               <input
                 type="text"
                 placeholder="Search coins..."
-                className="w-full bg-transparent text-gray-900 placeholder:text-gray-400 outline-none text-lg"
+                className="w-full bg-transparent text-gray-900 placeholder:text-slate-400 outline-none text-lg"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus
@@ -101,7 +101,7 @@ export default function Header() {
             </div>
             <div className="list max-h-96 overflow-y-auto">
               {filteredCoins.length === 0 ? (
-                <div className="empty py-6 text-center text-sm text-gray-400">
+                <div className="empty py-6 text-center text-sm text-slate-400">
                   No results found
                 </div>
               ) : (
@@ -116,13 +116,13 @@ export default function Header() {
                       <img src={coin.image} alt={coin.name} className="size-9 rounded-full" />
                       <div>
                         <p className="font-semibold text-gray-900">{coin.name}</p>
-                        <p className="coin-symbol text-sm text-purple-100 uppercase">{coin.symbol}</p>
+                        <p className="coin-symbol text-sm text-slate-500 uppercase">{coin.symbol}</p>
                       </div>
                     </div>
                     <div className="coin-price text-right font-semibold text-gray-700">
                       ${coin.price.toLocaleString()}
                     </div>
-                    <div className={`coin-change text-right font-medium ${coin.change >= 0 ? "text-green-500" : "text-red-500"}`}>
+                    <div className={`coin-change text-right font-medium ${coin.change >= 0 ? "text-green-600" : "text-red-600"}`}>
                       {coin.change >= 0 ? "+" : ""}{coin.change}%
                     </div>
                   </Link>

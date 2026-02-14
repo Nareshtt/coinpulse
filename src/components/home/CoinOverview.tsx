@@ -64,11 +64,11 @@ export default function CoinOverview({ coin, chartData }: CoinOverviewProps) {
           className="w-10 h-10 md:w-14 md:h-14"
         />
         <div className="info flex flex-col">
-          <p className="flex text-purple-100 text-xs md:text-sm w-fit">
+          <p className="flex text-slate-500 text-xs md:text-sm w-fit">
             {coin?.name || "Bitcoin"} / {(coin?.symbol || "btc").toUpperCase()}
           </p>
           <h1 className="text-xl md:text-2xl font-semibold text-gray-900">{formatCurrency(price)}</h1>
-          <span className={isPositive ? "text-green-500 text-sm" : "text-red-500 text-sm"}>
+          <span className={isPositive ? "text-green-600 text-sm" : "text-red-600 text-sm"}>
             {isPositive ? "+" : ""}{change.toFixed(2)}% (24h)
           </span>
         </div>

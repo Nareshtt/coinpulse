@@ -35,7 +35,7 @@ export default function CoinsTable({ coins }: CoinsTableProps) {
         <tbody>
           {coins.map((coin, index) => (
             <tr key={coin.id} className="border-t border-gray-100 hover:bg-gray-50">
-              <td className="py-5 pl-5 font-medium text-purple-600">{index + 1}</td>
+              <td className="py-5 pl-5 font-medium text-slate-500">{index + 1}</td>
               <td className="py-3 font-semibold">
                 <a href={`/coins/${coin.id}`} className="flex items-center gap-3">
                   <Image
@@ -46,14 +46,14 @@ export default function CoinsTable({ coins }: CoinsTableProps) {
                     className="rounded-full"
                   />
                   <span className="text-gray-900">{coin.name}</span>
-                  <span className="text-gray-400 text-sm uppercase">{coin.symbol}</span>
+                  <span className="text-slate-400 text-sm uppercase">{coin.symbol}</span>
                 </a>
               </td>
               <td className="py-4 text-right font-medium text-gray-700">{formatCurrency(coin.current_price)}</td>
-              <td className={`py-4 text-right font-medium ${coin.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+              <td className={`py-4 text-right font-medium ${coin.price_change_percentage_24h >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                 {formatPercentage(coin.price_change_percentage_24h)}
               </td>
-              <td className="py-4 pr-5 text-right font-medium text-gray-500">{formatCurrency(coin.market_cap)}</td>
+              <td className="py-4 pr-5 text-right font-medium text-slate-500">{formatCurrency(coin.market_cap)}</td>
             </tr>
           ))}
         </tbody>
