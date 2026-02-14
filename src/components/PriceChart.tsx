@@ -36,21 +36,21 @@ export default function PriceChart({
           {showGrid && (
             <CartesianGrid 
               strokeDasharray="3 3" 
-              stroke="rgba(255,255,255,0.05)" 
+              stroke="rgba(0,0,0,0.08)" 
               vertical={false}
             />
           )}
           <XAxis 
             dataKey="time" 
-            tick={{ fill: '#6b7280', fontSize: 11 }} 
-            axisLine={{ stroke: 'rgba(255,255,255,0.08)' }}
+            tick={{ fill: '#9ca3af', fontSize: 11 }} 
+            axisLine={{ stroke: 'rgba(0,0,0,0.1)' }}
             tickLine={false}
             dy={10}
           />
           <YAxis 
             domain={['auto', 'auto']}
-            tick={{ fill: '#6b7280', fontSize: 11 }}
-            axisLine={{ stroke: 'rgba(255,255,255,0.08)' }}
+            tick={{ fill: '#9ca3af', fontSize: 11 }}
+            axisLine={{ stroke: 'rgba(0,0,0,0.1)' }}
             tickLine={false}
             tickFormatter={(value) => `$${value >= 1000 ? (value/1000).toFixed(1) + 'k' : value.toFixed(0)}`}
             width={70}
@@ -58,13 +58,13 @@ export default function PriceChart({
           />
           <Tooltip
             contentStyle={{ 
-              backgroundColor: '#0d1117', 
-              border: '1px solid rgba(255,255,255,0.1)',
+              backgroundColor: '#ffffff', 
+              border: '1px solid #e5e7eb',
               borderRadius: '8px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-              color: '#fff'
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              color: '#111827'
             }}
-            labelStyle={{ color: '#9ca3af', marginBottom: '4px' }}
+            labelStyle={{ color: '#6b7280', marginBottom: '4px' }}
             formatter={(value) => [`$${Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, 'Price']}
           />
           <Area 
@@ -77,7 +77,7 @@ export default function PriceChart({
             activeDot={{ 
               r: 5, 
               fill: color,
-              stroke: '#0d1117',
+              stroke: '#ffffff',
               strokeWidth: 2,
             }}
           />

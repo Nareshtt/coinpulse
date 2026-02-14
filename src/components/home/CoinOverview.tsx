@@ -54,7 +54,7 @@ export default function CoinOverview({ coin, chartData }: CoinOverviewProps) {
   const chartColor = isPositive ? '#22c55e' : '#ef4444';
 
   return (
-    <div id="coin-overview" className="w-full h-full xl:col-span-2 px-2 bg-dark-600 rounded-xl">
+    <div id="coin-overview" className="w-full h-full xl:col-span-2 px-2 bg-white rounded-xl border border-gray-200">
       <div className="header flex-1 mb-2 flex gap-2 md:gap-3 pt-4">
         <Image 
           src={coin?.image?.large || "https://assets.coingecko.com/coins/images/1/large/bitcoin.png"} 
@@ -64,10 +64,10 @@ export default function CoinOverview({ coin, chartData }: CoinOverviewProps) {
           className="w-10 h-10 md:w-14 md:h-14"
         />
         <div className="info flex flex-col">
-          <p className="flex text-gray-400 text-xs md:text-sm w-fit">
+          <p className="flex text-purple-100 text-xs md:text-sm w-fit">
             {coin?.name || "Bitcoin"} / {(coin?.symbol || "btc").toUpperCase()}
           </p>
-          <h1 className="text-xl md:text-2xl font-semibold text-white">{formatCurrency(price)}</h1>
+          <h1 className="text-xl md:text-2xl font-semibold text-gray-900">{formatCurrency(price)}</h1>
           <span className={isPositive ? "text-green-500 text-sm" : "text-red-500 text-sm"}>
             {isPositive ? "+" : ""}{change.toFixed(2)}% (24h)
           </span>
