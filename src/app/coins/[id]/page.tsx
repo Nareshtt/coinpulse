@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getMarketCoins } from "@/lib/coingecko";
+import { getMarketCoins, getCoinChartData } from "@/lib/coingecko";
 import { formatCurrency, formatPercentage } from "@/lib/utils";
+import PriceChart from "@/components/PriceChart";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -16,6 +17,10 @@ export default async function CoinPage({ params }: PageProps) {
   if (!coin) {
     notFound();
   }
+
+  const chartData = await getCoinChartData(id, 30);
+  const isPositive = coin.price_change_percentage_24h >= 0;
+  const chartColor = isPositive ? '#00cc6a' : '#ff3366';
 
   return (
     <main className="main-container">
@@ -35,17 +40,18 @@ export default async function CoinPage({ params }: PageProps) {
                   {coin.name} / {coin.symbol.toUpperCase()}
                 </p>
                 <h1 className="text-xl md:text-2xl font-semibold">{formatCurrency(coin.current_price)}</h1>
-                <span className={coin.price_change_percentage_24h >= 0 ? "text-green-400" : "text-red-400"}>
+                <span className={isPositive ? "text-green-400" : "text-red-400"}>
                   {formatPercentage(coin.price_change_percentage_24h)} (24h)
                 </span>
               </div>
             </div>
             
-            <div className="h-80 bg-dark-400 rounded-lg flex items-center justify-center m-2">
-              <div className="text-center">
-                <p className="text-gray-400">Interactive Chart</p>
-                <p className="text-sm text-cyan-400 mt-2">TradingView Chart Coming Soon</p>
-              </div>
+            <div className="p-2">
+              <PriceChart 
+                data={chartData} 
+                color={chartColor}
+                height={320}
+              />
             </div>
           </div>
         </div>
@@ -97,7 +103,7 @@ export default async function CoinPage({ params }: PageProps) {
         </div>
         <div className="bg-dark-500 p-4 rounded-lg">
           <p className="text-cyan-100 text-sm">24h Change</p>
-          <p className={`font-semibold text-lg ${coin.price_change_percentage_24h >= 0 ? "text-green-400" : "text-red-400"}`}>
+          <p className={`font-semibold text-lg ${isPositive ? "text-green-400" : "text-red-400"}`}>
             {formatPercentage(coin.price_change_percentage_24h)}
           </p>
         </div>

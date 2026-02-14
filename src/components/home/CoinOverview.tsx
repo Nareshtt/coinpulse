@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { formatCurrency } from "@/lib/utils";
+import PriceChart from "@/components/PriceChart";
 
 interface Coin {
   id: string;
@@ -18,11 +19,39 @@ interface Coin {
 
 interface CoinOverviewProps {
   coin?: Coin;
+  chartData?: { time: string; value: number }[];
 }
 
-export default function CoinOverview({ coin }: CoinOverviewProps) {
+function generateMockChartData(basePrice: number, days: number = 30): { time: string; value: number }[] {
+  const data: { time: string; value: number }[] = [];
+  const now = new Date();
+  let price = basePrice * 0.85;
+  
+  for (let i = days; i >= 0; i--) {
+    const date = new Date(now);
+    date.setDate(date.getDate() - i);
+    
+    const change = (Math.random() - 0.45) * basePrice * 0.03;
+    price = Math.max(price + change, basePrice * 0.5);
+    price = Math.min(price, basePrice * 1.2);
+    
+    data.push({
+      time: date.toISOString().split('T')[0],
+      value: price
+    });
+  }
+  
+  data[data.length - 1].value = basePrice;
+  return data;
+}
+
+export default function CoinOverview({ coin, chartData }: CoinOverviewProps) {
   const price = coin?.market_data?.current_price?.usd || 89234;
   const change = coin?.market_data?.price_change_percentage_24h || 2.45;
+  const isPositive = change >= 0;
+  
+  const data = chartData || generateMockChartData(price, 30);
+  const chartColor = isPositive ? '#00cc6a' : '#ff3366';
 
   return (
     <div id="coin-overview" className="w-full h-full xl:col-span-2 px-2 bg-dark-500 rounded-xl">
@@ -39,14 +68,18 @@ export default function CoinOverview({ coin }: CoinOverviewProps) {
             {coin?.name || "Bitcoin"} / {(coin?.symbol || "btc").toUpperCase()}
           </p>
           <h1 className="text-xl md:text-2xl font-semibold">{formatCurrency(price)}</h1>
+          <span className={isPositive ? "text-green-400 text-sm" : "text-red-400 text-sm"}>
+            {isPositive ? "+" : ""}{change.toFixed(2)}% (24h)
+          </span>
         </div>
       </div>
       
-      <div className="h-64 bg-dark-400 rounded-lg flex items-center justify-center m-2">
-        <div className="text-center">
-          <p className="text-gray-400">Price Chart</p>
-          <p className="text-sm text-cyan-400 mt-2">Interactive chart coming soon</p>
-        </div>
+      <div className="p-2">
+        <PriceChart 
+          data={data} 
+          color={chartColor}
+          height={260}
+        />
       </div>
     </div>
   );

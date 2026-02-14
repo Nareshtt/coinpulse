@@ -11,3 +11,19 @@ export interface TrendingCoin {
     score: number;
   };
 }
+
+export interface DataTableColumn<T> {
+  header: string;
+  cell?: (row: T, rowIndex: number) => React.ReactNode;
+}
+
+export interface DataTableProps<T> {
+  columns: DataTableColumn<T>[];
+  data: T[];
+  rowKey: (row: T, index: number) => string | number;
+  tableClassName?: string;
+  headerRowClassName?: string;
+  headerCellClassName?: string;
+  bodyRowClassName?: string;
+  bodyCellClassName?: string;
+}
