@@ -73,6 +73,39 @@ body {
 .price-up { color: var(--accent-green); }
 .price-down { color: var(--accent-red); }
 
+.main-container {
+  padding-y: 6;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    padding-y: 8;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-link {
+  color: var(--foreground-secondary);
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--foreground);
+}
+
+.nav-link.is-active {
+  color: var(--primary);
+}
+
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--background-secondary); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
