@@ -48,7 +48,8 @@
   --color-dark-600: var(--dark-600);
   --color-dark-500: var(--dark-500);
   --color-dark-400: var(--dark-400);
-  --color-accent-blue: var(--accent-blue);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-green-500: var(--green-500);
   --color-red-500: var(--red-500);
 }
@@ -89,68 +90,68 @@
 }
 
 .dark {
-  /* Kole Jain Color Principles - Professional Crypto Dashboard:
-     1. Darker backgrounds (professional, not gaming)
-     2. Subtle blue tint for sophistication (not neon cyan)
-     3. Muted accent colors
-     4. White for active/important, gray for inactive
-     5. OKLCH for consistent perception
+  /* Kole Jain Color Principles - Professional Dark Theme:
+     1. Deep dark backgrounds (professional)
+     2. Muted purple accent (from reference, but professional)
+     3. White for active/important
+     4. OKLCH for consistent perception
   */
   
-  --background: oklch(0.05 0.02 240);
+  --background: oklch(0.045 0.015 240);
   --foreground: oklch(0.95 0 0);
-  --card: oklch(0.08 0.02 240);
+  --card: oklch(0.08 0.02 250);
   --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.08 0.02 240);
+  --popover: oklch(0.08 0.02 250);
   --popover-foreground: oklch(0.95 0 0);
   
-  /* Professional blue accent */
-  --primary: oklch(0.6 0.15 250);
+  /* Muted purple accent - subtle, not neon */
+  --primary: oklch(0.45 0.12 265);
   --primary-foreground: oklch(0.1 0 0);
   
-  --secondary: oklch(0.12 0.02 240);
+  --secondary: oklch(0.11 0.02 250);
   --secondary-foreground: oklch(0.85 0 0);
-  --muted: oklch(0.12 0.02 240);
-  --muted-foreground: oklch(0.55 0 0);
-  --accent: oklch(0.15 0.03 240);
+  --muted: oklch(0.11 0.02 250);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.14 0.03 255);
   --accent-foreground: oklch(0.9 0 0);
   
   /* Muted red for destructive */
-  --destructive: oklch(0.55 0.15 15);
-  --border: oklch(1 0 0 / 15%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.6 0.15 250);
+  --destructive: oklch(0.5 0.15 20);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 8%);
+  --ring: oklch(0.45 0.12 265);
   
   /* Chart colors - professional palette */
-  --chart-1: oklch(0.6 0.15 250);
-  --chart-2: oklch(0.55 0.2 280);
-  --chart-3: oklch(0.55 0.15 150);
-  --chart-4: oklch(0.6 0.15 45);
-  --chart-5: oklch(0.55 0.12 320);
+  --chart-1: oklch(0.45 0.12 265);
+  --chart-2: oklch(0.55 0.18 180);
+  --chart-3: oklch(0.5 0.15 150);
+  --chart-4: oklch(0.55 0.18 45);
+  --chart-5: oklch(0.5 0.15 320);
   
-  --sidebar: oklch(0.06 0.02 240);
+  --sidebar: oklch(0.055 0.015 240);
   --sidebar-foreground: oklch(0.9 0 0);
-  --sidebar-primary: oklch(0.6 0.15 250);
+  --sidebar-primary: oklch(0.45 0.12 265);
   --sidebar-primary-foreground: oklch(0.1 0 0);
-  --sidebar-accent: oklch(0.12 0.02 240);
+  --sidebar-accent: oklch(0.11 0.02 250);
   --sidebar-accent-foreground: oklch(0.85 0 0);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.6 0.15 250);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.45 0.12 265);
 
-  /* Brand colors - darker professional theme */
-  --dark-900: oklch(0.04 0.01 240);
-  --dark-800: oklch(0.06 0.02 240);
-  --dark-700: oklch(0.08 0.02 240);
-  --dark-600: oklch(0.12 0.02 240);
-  --dark-500: oklch(0.16 0.03 240);
-  --dark-400: oklch(0.22 0.04 240);
+  /* Brand colors - deep dark theme */
+  --dark-900: oklch(0.03 0.01 240);
+  --dark-800: oklch(0.045 0.015 240);
+  --dark-700: oklch(0.06 0.02 245);
+  --dark-600: oklch(0.09 0.025 250);
+  --dark-500: oklch(0.12 0.03 255);
+  --dark-400: oklch(0.17 0.04 260);
 
-  /* Accent - subtle professional blue */
-  --accent-blue: oklch(0.6 0.15 250);
+  /* Accent - muted purple (from reference, professionally applied) */
+  --accent: oklch(0.45 0.12 265);
+  --accent-light: oklch(0.6 0.1 265);
 
   /* Semantic colors - muted, not neon */
-  --green-500: oklch(0.55 0.15 150);
-  --red-500: oklch(0.55 0.15 15);
+  --green-500: oklch(0.5 0.15 150);
+  --red-500: oklch(0.5 0.15 20);
 }
 
 @layer base {
@@ -201,11 +202,11 @@
         @apply flex h-full items-center;
 
         .nav-link {
-          @apply px-5 py-5 flex items-center transition-all font-medium h-full text-gray-400 cursor-pointer text-sm;
+          @apply px-5 py-5 flex items-center transition-all font-medium h-full text-gray-500 cursor-pointer text-sm;
         }
 
         .nav-link:hover {
-          @apply text-white;
+          @apply text-gray-300;
         }
 
         .nav-link.is-active {
@@ -231,7 +232,7 @@
     }
 
     .config-button {
-      @apply rounded-sm border-0 cursor-pointer px-2.5 py-2 text-xs xl:text-sm text-gray-400 hover:bg-dark-500 hover:text-white;
+      @apply rounded-sm border-0 cursor-pointer px-2.5 py-2 text-xs xl:text-sm text-gray-500 hover:bg-dark-500 hover:text-white;
     }
 
     .config-button-active {
@@ -281,7 +282,7 @@
         @apply flex gap-1 justify-between;
 
         .label {
-          @apply text-gray-400;
+          @apply text-gray-500;
         }
 
         .value {
@@ -311,7 +312,7 @@
     }
 
     .change-header-cell {
-      @apply font-medium text-gray-400;
+      @apply font-medium text-gray-500;
     }
 
     .change-cell {
@@ -319,11 +320,11 @@
     }
 
     .market-cap-cell {
-      @apply font-medium text-gray-400;
+      @apply font-medium text-gray-500;
     }
 
     .volume-cell {
-      @apply font-medium text-gray-400;
+      @apply font-medium text-gray-500;
     }
   }
 
@@ -387,7 +388,7 @@
     }
 
     .change-header-cell {
-      @apply font-medium text-gray-400;
+      @apply font-medium text-gray-500;
     }
 
     .change-cell {
@@ -395,11 +396,11 @@
     }
 
     .market-cap-cell {
-      @apply font-medium text-gray-400;
+      @apply font-medium text-gray-500;
     }
 
     .volume-cell {
-      @apply font-medium text-gray-400;
+      @apply font-medium text-gray-500;
     }
 
     .category-skeleton {
@@ -558,7 +559,7 @@
       }
 
       .time-cell {
-        @apply pr-5 text-end text-gray-400;
+        @apply pr-5 text-end text-gray-500;
       }
     }
 
@@ -576,7 +577,7 @@
           @apply text-base bg-dark-600 px-5 py-6 rounded-lg flex flex-col gap-3;
 
           .label {
-            @apply text-gray-400;
+            @apply text-gray-500;
           }
 
           .link {
@@ -602,7 +603,7 @@
       @apply bg-dark-600 rounded-xl max-h-fit overflow-hidden;
 
       .rank-cell {
-        @apply pl-5 max-w-20! py-5 font-medium text-gray-400;
+        @apply pl-5 max-w-20! py-5 font-medium text-gray-500;
 
         a {
           @apply absolute inset-0 z-10;
@@ -634,18 +635,18 @@
       }
 
       .market-cap-cell {
-        @apply pr-5 font-medium text-gray-400;
+        @apply pr-5 font-medium text-gray-500;
       }
     }
   }
 
   #search-modal {
     .trigger {
-      @apply px-5 font-medium transition-all h-full cursor-pointer text-sm text-gray-400 flex items-center gap-2;
+      @apply px-5 font-medium transition-all h-full cursor-pointer text-sm text-gray-500 flex items-center gap-2;
     }
 
     .kbd {
-      @apply pointer-events-none hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border border-dark-500 bg-dark-600 px-1.5 font-mono text-[10px] font-medium text-gray-400;
+      @apply pointer-events-none hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border border-dark-500 bg-dark-600 px-1.5 font-mono text-[10px] font-medium text-gray-500;
     }
 
     .dialog {
@@ -656,7 +657,7 @@
       @apply bg-dark-600!;
 
       input {
-        @apply placeholder:text-gray-500!;
+        @apply placeholder:text-gray-600!;
       }
     }
 
@@ -665,17 +666,17 @@
     }
 
     .heading {
-      @apply flex items-center gap-2 text-gray-400;
+      @apply flex items-center gap-2 text-gray-500;
     }
 
     .group {
-      @apply bg-dark-600 text-gray-400;
+      @apply bg-dark-600 text-gray-500;
     }
   }
 
   .dialog {
     .empty {
-      @apply py-6 text-center text-sm text-gray-500;
+      @apply py-6 text-center text-sm text-gray-600;
     }
 
     .search-item {
@@ -693,7 +694,7 @@
         }
 
         .coin-symbol {
-          @apply text-sm text-gray-400 uppercase;
+          @apply text-sm text-gray-500 uppercase;
         }
       }
 
@@ -814,10 +815,10 @@
       @apply grid grid-cols-3 mt-8 gap-4 sm:gap-6 w-fit;
 
       li {
-        @apply text-base border-r last:border-none border-dark-500 flex flex-col gap-2 text-gray-400;
+        @apply text-base border-r last:border-none border-dark-500 flex flex-col gap-2 text-gray-500;
 
         .label {
-          @apply text-gray-500 max-sm:text-sm;
+          @apply text-gray-600 max-sm:text-sm;
         }
 
         .value {
@@ -841,7 +842,7 @@
         @apply flex flex-col;
 
         p {
-          @apply flex text-gray-400 text-xs md:text-sm w-fit;
+          @apply flex text-gray-500 text-xs md:text-sm w-fit;
         }
 
         h1 {
@@ -869,7 +870,7 @@
     }
 
     .control-button {
-      @apply cursor-pointer text-gray-400 hover:text-white;
+      @apply cursor-pointer text-gray-500 hover:text-white;
     }
 
     .control-disabled {
@@ -880,11 +881,11 @@
       @apply flex flex-1 justify-center gap-2;
 
       .ellipsis {
-        @apply px-3 py-2 text-base text-gray-500;
+        @apply px-3 py-2 text-base text-gray-600;
       }
 
       .page-link {
-        @apply hover:bg-dark-500! rounded-sm text-base cursor-pointer text-gray-400 hover:text-white;
+        @apply hover:bg-dark-500! rounded-sm text-base cursor-pointer text-gray-500 hover:text-white;
       }
 
       .page-link-active {
@@ -928,15 +929,15 @@
       }
 
       .value-cell {
-        @apply font-medium text-gray-400;
+        @apply font-medium text-gray-500;
       }
 
       .type-cell {
-        @apply font-medium text-gray-400;
+        @apply font-medium text-gray-500;
       }
 
       .time-cell {
-        @apply pr-5 text-gray-500;
+        @apply pr-5 text-gray-600;
       }
     }
   }
@@ -953,12 +954,12 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #333340;
+  background: #252a33;
   border-radius: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #444455;
+  background: #323842;
 }
 
 /* Table Custom Scrollbar */
@@ -976,10 +977,10 @@
 }
 
 .custom-scrollbar [data-slot='table-container']::-webkit-scrollbar-thumb {
-  background: #333340;
+  background: #252a33;
   border-radius: 6px;
 }
 
 .custom-scrollbar [data-slot='table-container']::-webkit-scrollbar-thumb:hover {
-  background: #444455;
+  background: #323842;
 }
