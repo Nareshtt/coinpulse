@@ -44,7 +44,7 @@ export default function Header() {
       <header className="bg-gray-50">
         <div className="main-container inner">
           <Link href="/">
-            <Image src="/logo.svg" alt="CoinPulse logo" width={140} height={40} />
+            <Image src="/logo.svg" alt="CoinPulse logo" width={150} height={40} />
           </Link>
 
           <nav>
